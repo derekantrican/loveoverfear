@@ -42,6 +42,10 @@ function App() {
 
   return (
     <div className="page">
+      <div className="brand">
+        <span className="brand-name">LoveOverFear</span>
+        <span className="brand-sub">coalition</span>
+      </div>
       <main className="hero">
         <h1 className="headline">
           Love your
