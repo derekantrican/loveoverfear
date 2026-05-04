@@ -1,0 +1,147 @@
+/* ── Layout ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* ── Hero / cycling text ── */
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headline {
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  width: 100%;
+}
+
+.word-container {
+  display: block;
+  height: 1.35em;
+  overflow: hidden;
+  position: relative;
+}
+
+.cycling-word {
+  display: block;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.cycling-word.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cycling-word.exiting {
+  animation: slideOut 0.4s ease forwards;
+}
+
+.cycling-word.entering {
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Newsletter ── */
+.newsletter {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-prompt {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-input:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.newsletter-button:hover {
+  opacity: 0.85;
+}
+
+/* ── Mobile adjustments ── */
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-button {
+    width: 100%;
+  }
+}
