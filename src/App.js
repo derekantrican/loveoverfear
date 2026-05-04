@@ -40,6 +40,16 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
+    script.async = true;
+    script.dataset.beehiivForm = 'e3804571-d532-4249-b65f-fa4ecdf5b6b9';
+    const container = document.getElementById('beehiiv-form');
+    if (container) container.appendChild(script);
+    return () => { if (container) container.innerHTML = ''; };
+  }, []);
+
   return (
     <div className="page">
       <div className="brand">
@@ -59,30 +69,7 @@ function App() {
       </main>
 
       <footer className="newsletter">
-        <p className="newsletter-prompt">Stay connected.</p>
-        <form
-          className="newsletter-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            // TODO: wire up to your newsletter provider (Beehiiv, Mailerlite, etc.)
-            const email = e.target.elements.email.value;
-            console.log('Signup:', email);
-            alert('Thanks for signing up! (Provider not yet connected)');
-            e.target.reset();
-          }}
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email"
-            required
-            className="newsletter-input"
-            aria-label="Email address"
-          />
-          <button type="submit" className="newsletter-button">
-            Sign Up
-          </button>
-        </form>
+        <div id="beehiiv-form" className="beehiiv-embed"></div>
       </footer>
     </div>
   );
