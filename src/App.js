@@ -58,14 +58,15 @@ function App() {
       </div>
       <main className="hero">
         <h1 className="headline">
-          Love your
+          &ldquo;Love your
           <span className="word-container">
             <span className={`cycling-word ${animState}`}>
               {words[currentIndex]}
             </span>
           </span>
-          neighbor.
+          neighbor.&rdquo;
         </h1>
+        <p className="attribution">&mdash;Jesus (Luke 10:25-37)</p>
       </main>
 
       <footer className="newsletter">
